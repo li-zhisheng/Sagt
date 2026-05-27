@@ -11,6 +11,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+## 测试用的客户ID和员工ID
+DEMO_EXTERNAL_ID = os.getenv("DEMO_EXTERNAL_ID")
+DEMO_USER_ID = os.getenv("DEMO_USER_ID")
 
 server_url = os.getenv("SAGT_SERVER_URL")
 sagt_user = os.getenv("SAGT_USER_ID")
@@ -117,8 +120,8 @@ async def test_profile_suggestion():
     console = Console()
     client = SagtAgentAPI()
     await client.connect(sagt_server_url=server_url, sagt_user=sagt_user, password=sagt_user_password)
-    assistant_id = await client.create_assistant(graph_id="sagt", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
-    thread_id = await client.create_thread(external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
+    assistant_id = await client.create_assistant(graph_id="sagt", external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
+    thread_id = await client.create_thread(external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
     stream = await client.create_stream_run(thread_id=thread_id, assistant_id=assistant_id, input={"task_input": "profile_suggestion"})
     async for chunk in stream:
         console.print(chunk)
@@ -129,8 +132,8 @@ async def test_tag_suggestion():
     console = Console()
     client = SagtAgentAPI()
     await client.connect(sagt_server_url=server_url, sagt_user=sagt_user, password=sagt_user_password)
-    assistant_id = await client.create_assistant(graph_id="sagt", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
-    thread_id = await client.create_thread(external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
+    assistant_id = await client.create_assistant(graph_id="sagt", external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
+    thread_id = await client.create_thread(external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
     stream = await client.create_stream_run(thread_id=thread_id, assistant_id=assistant_id, input={"task_input": "tag_suggestion"})
     async for chunk in stream:
         console.print(chunk)
@@ -141,8 +144,8 @@ async def test_schedule_suggestion():
     console = Console()
     client = SagtAgentAPI()
     await client.connect(sagt_server_url=server_url, sagt_user=sagt_user, password=sagt_user_password)
-    assistant_id = await client.create_assistant(graph_id="sagt", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
-    thread_id = await client.create_thread(external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
+    assistant_id = await client.create_assistant(graph_id="sagt", external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
+    thread_id = await client.create_thread(external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
     stream = await client.create_stream_run(thread_id=thread_id, assistant_id=assistant_id, input={"task_input": "schedule_suggestion"})
     async for chunk in stream:
         console.print(chunk)
@@ -153,8 +156,8 @@ async def test_chat_suggestion():
     console = Console()
     client = SagtAgentAPI()
     await client.connect(sagt_server_url=server_url, sagt_user=sagt_user, password=sagt_user_password)
-    assistant_id = await client.create_assistant(graph_id="sagt", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
-    thread_id = await client.create_thread(external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
+    assistant_id = await client.create_assistant(graph_id="sagt", external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
+    thread_id = await client.create_thread(external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
     stream = await client.create_stream_run(thread_id=thread_id, assistant_id=assistant_id, input={"task_input": "chat_suggestion"})
     async for chunk in stream:
         console.print(chunk)
@@ -165,8 +168,8 @@ async def test_kf_chat_suggestion():
     console = Console()
     client = SagtAgentAPI()
     await client.connect(sagt_server_url=server_url, sagt_user=sagt_user, password=sagt_user_password)
-    assistant_id = await client.create_assistant(graph_id="sagt", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
-    thread_id = await client.create_thread(external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
+    assistant_id = await client.create_assistant(graph_id="sagt", external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
+    thread_id = await client.create_thread(external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
     stream = await client.create_stream_run(thread_id=thread_id, assistant_id=assistant_id, input={"task_input": "kf_chat_suggestion"})
     async for chunk in stream:
         console.print(chunk)
@@ -177,8 +180,8 @@ async def test_talk_suggestion():
     console = Console()
     client = SagtAgentAPI()
     await client.connect(sagt_server_url=server_url, sagt_user=sagt_user, password=sagt_user_password)
-    assistant_id = await client.create_assistant(graph_id="sagt", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
-    thread_id = await client.create_thread(external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
+    assistant_id = await client.create_assistant(graph_id="sagt", external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
+    thread_id = await client.create_thread(external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
     stream = await client.create_stream_run(thread_id=thread_id, assistant_id=assistant_id, input={"task_input": "talk_suggestion"})
     async for chunk in stream:
         console.print(chunk)
@@ -191,7 +194,7 @@ async def get_interrupt():
     client = SagtAgentAPI()
     await client.connect(sagt_server_url=server_url, sagt_user=sagt_user, password=sagt_user_password)
 
-    thread_id = await client.get_thread_id(user_id="ChengJianZhang", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg")
+    thread_id = await client.get_thread_id(user_id=DEMO_USER_ID, external_id=DEMO_EXTERNAL_ID)
     interrupt = await client.get_interrupts_from_thread(thread_id=thread_id)
     if interrupt:
         console.print(f"[green]获取到中断信息[/green]")
@@ -204,8 +207,8 @@ async def resume_interrupt():
     console = Console()
     client = SagtAgentAPI()
     await client.connect(sagt_server_url=server_url, sagt_user=sagt_user, password=sagt_user_password)
-    assistant_id = await client.create_assistant(graph_id="sagt", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
-    thread_id = await client.get_thread_id(user_id="ChengJianZhang", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg")
+    assistant_id = await client.create_assistant(graph_id="sagt", external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
+    thread_id = await client.get_thread_id(user_id=DEMO_USER_ID, external_id=DEMO_EXTERNAL_ID)
 
     comfirmed = {"confirmed": "ok"}
     command = {"resume": comfirmed}
@@ -219,8 +222,8 @@ async def resume_interrupt_with_confirmed(confirmed: str = "ok"):
     console = Console()
     client = SagtAgentAPI()
     await client.connect(sagt_server_url=server_url, sagt_user=sagt_user, password=sagt_user_password)
-    assistant_id = await client.create_assistant(graph_id="sagt", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg", user_id="ChengJianZhang")
-    thread_id = await client.get_thread_id(user_id="ChengJianZhang", external_id="wmE8gRKQAArnVDJ84bNuOK3KVjy_7-Wg")
+    assistant_id = await client.create_assistant(graph_id="sagt", external_id=DEMO_EXTERNAL_ID, user_id=DEMO_USER_ID)
+    thread_id = await client.get_thread_id(user_id=DEMO_USER_ID, external_id=DEMO_EXTERNAL_ID)
 
     confirmed = {"confirmed": confirmed}
     command = {"resume": confirmed}

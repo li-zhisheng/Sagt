@@ -58,4 +58,4 @@ async def authenticate(request: Request, authorization: str|None) -> str:
     if not verified:
         raise Auth.exceptions.HTTPException(status_code=401, detail="Invalid token")
 
-    return "ChengJianZhang"
+    return VALID_TOKENS.get(token, {}).get("user_id")

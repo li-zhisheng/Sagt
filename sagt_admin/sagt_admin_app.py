@@ -132,8 +132,7 @@ def api_create_employee():
 def api_delete_employee(user_id):
     """删除员工API"""
     try:
-        ## 暂不允许删除员工
-        ## client.delete_employee(user_id)
+        client.delete_employee(user_id)
         return jsonify({"success": True, "message": "暂不允许删除员工"})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
