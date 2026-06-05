@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 # 添加项目路径
-sys.path.append("/root/project/sagt_202509/sagt_agent/src")
+sys.path.append("../../src")
 
 from models.sagt_models import (
     ReplySuggestion, ChatHistory, CustomerInfo, ChatMessage, EmployeeInfo

@@ -8,7 +8,7 @@ import sys
 import os
 
 # 添加项目路径
-sys.path.append("/root/project/sagt_agent/src")
+sys.path.append("../../src")
 
 from llm.llm_just_talk import llm_just_talk
 
