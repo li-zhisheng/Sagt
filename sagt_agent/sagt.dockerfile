@@ -21,13 +21,23 @@ RUN set -ex && \
     done
 # -- End of non-package dependency src --
 
+ENV UV_DEFAULT_INDEX=https://mirrors.aliyun.com/pypi/simple/
+
 # -- Installing all local dependencies --
-RUN for dep in /deps/*; do             echo "Installing $dep";             if [ -d "$dep" ]; then                 echo "Installing $dep";                 (cd "$dep" && PYTHONDONTWRITEBYTECODE=1 uv pip install --system --no-cache-dir -c /api/constraints.txt -e .);             fi;         done
+RUN set -ex && \
+    for dep in /deps/*; do \
+        echo "Installing $dep"; \
+        if [ -d "$dep" ]; then \
+            (cd "$dep" && \
+             PYTHONDONTWRITEBYTECODE=1 uv pip install --system --no-cache-dir -c /api/constraints.txt -e .); \
+        fi; \
+    done
 # -- End of local dependencies install --
+
+# 关闭auth功能（体验版不支持auth）
 #ENV LANGGRAPH_AUTH='{"path": "/deps/outer-src/src/auth/auth.py:auth"}'
 ENV LANGGRAPH_HTTP='{"app": "/deps/sagt_agent/src/webapp/webapp.py:app"}'
 ENV LANGSERVE_GRAPHS='{"sagt": "/deps/sagt_agent/src/graphs/sagt_graph/sagt_graph.py:graph"}'
-
 
 
 # -- Ensure user deps didn't inadvertently overwrite langgraph-api
