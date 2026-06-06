@@ -23,7 +23,7 @@ app = FastAPI(lifespan=lifespan)
 
 class HeaderMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
-        logger.info("custom header for request url: %s", request.url)
+        logger.debug("custom header for request url: %s", request.url)
         
         response = await call_next(request)
         response.headers["X-custom-header"] = "by Sagt Agent"
